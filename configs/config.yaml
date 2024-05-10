@@ -1,0 +1,359 @@
+server:
+  port: ":8083"
+
+newrelic:
+  enabled: false
+  appName: "Wms Service Local"
+  licence: ""
+  distributedTracer: true
+  crossApplicationTracer: true
+
+log:
+  level: "debug"
+  format: "json"
+
+service:
+  name: "wms_service"
+
+env: "staging"
+
+redis:
+  clusterMode: false
+  hosts: "127.0.0.1:6379"
+  db: 4
+
+postgresql:
+  debugMode: true
+  database: "crud"
+  maxOpenConns: 10
+  maxIdleConns: 2
+  master:
+    host: "localhost"
+    port: "5435"
+    username: "admin"
+    password: "admin"
+  slaves:
+    hosts: "host.docker.internal"
+    port: "5433"
+    username: "admin"
+    password: "admin"
+
+tenantService:
+  baseUrl: "http://3.68.159.240:8001/"
+  timeout: 10
+
+omsService:
+  baseUrl: "http://3.68.159.240:8001/"
+  timeout: 10
+
+shippingService:
+  baseUrl: "http://3.68.159.240:8001/"
+  timeout: 10
+
+billingService:
+  baseUrl: "http://3.68.159.240:8001/"
+  timeout: 10
+
+pagination:
+  maxLimit: 100
+
+worker:
+  createSupplierSku:
+    name: "testing"
+    workerCount: 1
+    region: "eu-central-1"
+    endpoint: "https://sqs.eu-central-1.amazonaws.com/348639420040/testing"
+    account: "348639420040"
+
+  layout:
+    name: "testing.fifo"
+    workerCount: 1
+    region: "eu-central-1"
+    endpoint: "https://sqs.eu-central-1.amazonaws.com/00000000/testing.fifo"
+    account: "000000000"
+    concurrencyPerWorker: 1
+
+  redis:
+    name: "sales_channel_testing"
+    workerCount: 1
+    region: "eu-central-1"
+    endpoint: "https://sqs.eu-central-1.amazonaws.com/00000000/sales_channel_testing"
+    account: "000000000"
+    concurrencyPerWorker: 1
+
+  purchaseOrder:
+    name: "localstack-queue"
+    workerCount: 1
+    region: "eu-central-1"
+    endpoint: "http://host.docker.internal:4566/000000000000/localstack-queue"
+    account: "localstack-queue"
+    concurrencyPerWorker: 4
+
+  report:
+    name: "test-queue"
+    workerCount: 1
+    region: "us-east-1"
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  hubInventory:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  hubInventoryBatch:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  locationSkuBatch:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  locationSku:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  hubInventoryEvent:
+    name: ""
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+
+  batch:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  hubs:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  locations:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  grnSerialisationBarcode:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  cycleCountUpdateInventory:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  bins:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  safetyStock:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  nearExpiryThreshold:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  assemblyKitDetails:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  cycleCounts:
+    name: ""
+    workerCount: 1
+    region: ""
+    endpoint: "https://sqs.us-east-1.amazonaws.com/"
+    account: "000000000"
+    concurrencyPerWorker: 4
+
+  packOrder:
+    name: "testing-queue"
+    workerCount: 1
+    region: "us-east-1"
+    endpoint: "https://sqs.us-east-1.amazonaws.com/411372329370"
+    account: "411372329370"
+    concurrencyPerWorker: 4
+
+  createAdhocUsage:
+    name: "testing"
+    workerCount: 1
+    region: "eu-central-1"
+    endpoint: "https://sqs.eu-central-1.amazonaws.com/00000000/testing"
+    account: "000000000"
+    concurrencyPerWorker: 1
+
+  generateWave:
+    name: "testing"
+    workerCount: 1
+    region: "eu-central-1"
+    endpoint: "https://sqs.eu-central-1.amazonaws.com/00000000/testing"
+    account: "000000000"
+    concurrencyPerWorker: 1
+
+email:
+  region: "eu-central-1"
+
+s3:
+  bucket: "omniful-testing"
+  region: "eu-central-1"
+
+ephemeralUploadClient:
+  bucket: "omniful-dev"
+  region: "eu-central-1"
+
+constants:
+  batchSize: 500
+  locationSkuBatchSize: 10
+  orderWorkerEnabled: true
+
+report:
+  grn:
+    numberOfDays: 2
+  inventoryLog:
+    numberOfDays: 1
+
+barcode:
+  salts: "12"
+
+onlineKafka:
+  brokers:
+    - "localhost:9092"
+  clientId: wms-service
+  version: 2.0.0
+
+consumers:
+  hubInventory:
+    topic:  "omniful.wms-service.hub-inventory-events"
+  inwarding:
+    topic: "omniful.wms-service.hub-inventory-events"
+  order:
+    topic: "omniful.oms-service.order-events"
+    groupId: "omniful.oms-service.order-events.wms-service.local.cg"
+    enabled: true
+  inventoryRelease:
+    topic: "omniful.wms-service.picklist-update-events"
+    groupId: "omniful.wms-service.picklist-update-events.wms-service.local.cg"
+    enabled: true
+  picklist:
+    topic: "Topic1"
+    groupId: "Topic1.wms-service.local.cg"
+    enabled: true
+  assembly:
+    topic: "Topic1"
+    groupId: "Topic1.wms-service.local.cg"
+    enabled: true
+  warehouseSku:
+    topic : "omniful.product-service.sku-update-events"
+    groupId: "omniful.product-service.sku-update-events.wms-service.local.cg"
+    enabled: true
+    deadLetterQueue:
+      name: "warehouse-sku-dead-letter"
+      region: "eu-central-1"
+      endpoint: "https://sqs.us-east-1.amazonaws.com/"
+      account: "000000000"
+  orderEvents:
+    topic: "omniful.wms-service.order-events"
+  inventoryLogs:
+    topic: "omniful.wms-service.inventory-update-events"
+    groupId: "omniful.wms-service.inventory-update-events.wms-service.local.cg"
+    enabled: true
+  returnOrder:
+    topic: "omniful.wms-service.inventory-update-events"
+    groupId: "omniful.wms-service.inventory-update-events.wms-service.local.cg"
+    enabled: true
+  hubs:
+    topic: "omniful.wms-service.hub-events"
+    groupId: "omniful.wms-service.hub-events.wms-service.local.cg"
+    enabled: true
+  returnOrderEvents:
+    topic: "omniful.wms-service.inventory-update-events"
+
+migration:
+  flag: false
+
+apiGatewayClient:
+  bucket: "omniful-testing"
+  region: "eu-central-1"
+
+pusher:
+  channel: ""
+  purchaseOrder:
+    eventName: "purchase_order"
+  locationSku:
+    eventName: "location_sku"
+  orderCancel:
+    eventName: "order_cancel"
+  batchCreate:
+    eventName: "batch_create"
+  binCreate:
+    eventName: "bin_create"
+  grnSerialisationBarcode:
+    eventName: "grn_serialisation_barcode_upload"
+  safetyStock:
+    eventName: "hub_inventory_safety_stock_upload"
+  assemblyKitDetails:
+    eventName: "assembly_kit_details"
+  cycleCountCreate:
+    eventName: "cycle_count_create"
+  nearExpiryThreshold:
+    eventName: "near_expiry_threshold_update"
+  generateWave:
+    eventName: "generate_wave"
+  appId: ""
+  key: ""
+  secret: ""
+  cluster: ""
+
+notification :
+  slack :
+    token : ""
+    channelID : ""
